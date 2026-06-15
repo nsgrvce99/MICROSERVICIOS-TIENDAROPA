@@ -14,13 +14,14 @@ public class Pago {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
+    @NotNull(message = "El ID del pedido es obligatorio")
+    @Column(unique = true)
     private Integer pedidoId;
 
-    @NotNull
+    @NotNull(message = "El monto es obligatorio")
     private Double monto;
 
-    @NotBlank
+    @NotBlank(message = "El método de pago es obligatorio")
     private String metodoPago; 
 
     private String estado = "APROBADO"; 

@@ -17,13 +17,13 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull(message = "El ID del usuario es obligatorio")
+    @Notblank(message = "El ID del usuario es obligatorio")
     private Integer usuarioId;
 
     @NotNull(message = "El ID de la prenda es obligatorio")
     private Integer prendaId;
 
-    @NotNull(message = "La cantidad es obligatoria")
+    @Notblank(message = "La cantidad es obligatoria")
     private Integer cantidad;
 
 

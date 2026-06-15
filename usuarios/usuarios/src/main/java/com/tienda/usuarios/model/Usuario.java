@@ -17,11 +17,12 @@ public class Usuario {
     @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
 
-    @Email
+    @Email(message = "Debe ser un formato de correo electrónico válido")
+    @NotBlank(message = "El email es obligatorio")
     @Column(unique = true)
     private String email;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @NotBlank
+    @NotBlank(message = "La contraseña es obligatoria")
     private String password;
 }

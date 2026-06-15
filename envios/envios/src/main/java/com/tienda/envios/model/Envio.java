@@ -15,6 +15,7 @@ public class Envio {
     private Integer pedidoId;
 
     @NotBlank(message = "Debe indicar una dirección de entrega")
+    @Column(nullable = false, length = 100)
     private String direccion;
 
     private String courier = "STARKEN";

@@ -18,12 +18,15 @@ public class Prenda {
     private Integer id;
 
     @NotBlank(message = "El nombre no puede estar vacío")
+    @Column(nullable = false, length = 100)
     private String nombre;
 
     @NotBlank(message = "La categoría es obligatoria")
+    @Column(nullable = false, length = 100)
     private String categoria;
 
     @NotBlank(message = "La talla es obligatoria")
+    @Column(nullable = false, length = 100)
     private String talla;
 
     @NotNull(message = "El precio es obligatorio")

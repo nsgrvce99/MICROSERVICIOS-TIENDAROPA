@@ -13,10 +13,10 @@ public class Resena {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull(message = "El ID de la prenda es obligatorio")
+    @NotBlank(message = "El ID de la prenda es obligatorio")
     private Integer prendaId;
 
-    @NotNull(message = "El ID del usuario es obligatorio")
+    @NotBlank(message = "El ID del usuario es obligatorio")
     private Integer usuarioId;
 
     @NotNull(message = "Las estrellas son obligatorias")
