@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "pedido")
@@ -17,13 +18,13 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Notblank(message = "El ID del usuario es obligatorio")
+    @NotBlank(message = "El ID del usuario es obligatorio")
     private Integer usuarioId;
 
     @NotNull(message = "El ID de la prenda es obligatorio")
     private Integer prendaId;
 
-    @Notblank(message = "La cantidad es obligatoria")
+    @NotBlank(message = "La cantidad es obligatoria")
     private Integer cantidad;
 
 
