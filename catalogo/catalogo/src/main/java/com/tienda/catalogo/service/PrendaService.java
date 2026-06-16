@@ -17,7 +17,8 @@ public class PrendaService {
 
     public Prenda guardarPrenda(Prenda prenda) {
         return repository.save(prenda);
-    }
+    }    
+    
     public List<PrendaSimpleDTO> listarCatalogoSimple() {
         return repository.findAll().stream().map(prenda -> {
             PrendaSimpleDTO dto = new PrendaSimpleDTO();
