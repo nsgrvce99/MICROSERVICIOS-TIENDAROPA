@@ -23,6 +23,12 @@ public class ErrorDTO {
         this.mensaje = mensaje;
 
         this.errores = errores;
+
+
+
+
+
+
         
         this.path = path;
     }
