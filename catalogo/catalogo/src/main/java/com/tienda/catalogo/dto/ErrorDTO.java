@@ -17,9 +17,13 @@ public class ErrorDTO {
 
     public ErrorDTO(LocalDateTime timestamp, int status, String mensaje, Map<String, String> errores, String path) {
         this.timestamp = timestamp;
+
         this.status = status;
+
         this.mensaje = mensaje;
+
         this.errores = errores;
+        
         this.path = path;
     }
 }
