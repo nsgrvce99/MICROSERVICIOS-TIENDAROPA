@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.Map;
 
-@Data
+@Data    
 @NoArgsConstructor
 public class ErrorDTO {
     private LocalDateTime timestamp;
