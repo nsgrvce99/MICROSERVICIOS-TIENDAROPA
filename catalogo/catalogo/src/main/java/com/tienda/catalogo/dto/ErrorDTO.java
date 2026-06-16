@@ -20,16 +20,14 @@ public class ErrorDTO {
 
         this.status = status;
 
+
         this.mensaje = mensaje;
+
+
 
         this.errores = errores;
 
 
-
-
-
-
-        
         this.path = path;
     }
 }
