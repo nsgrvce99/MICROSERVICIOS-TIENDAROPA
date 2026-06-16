@@ -23,7 +23,7 @@ public class ErrorDTO {
 
         this.mensaje = mensaje;
 
-
+//holaaaa como esta muchacho
 
         this.errores = errores;
 
