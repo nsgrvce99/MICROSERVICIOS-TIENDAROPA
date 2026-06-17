@@ -17,6 +17,18 @@ import java.util.Map;
 public class PrendaController {
     private final PrendaService service;
 ////////////////////////////////////////////////
+    
+    @Operation( summary = "Obtener prenda por ID",
+                    description = "Busca una prenda en el catálogo por su ID")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Prenda encontrada"),
+        @ApiResponse(responseCode = "404", description = "Prenda no encontrada"),
+        @ApiResponse(responseCode = "500", description = "Error interno del servidor")
+    })
+        @GetMapping
+        public ResponseEntity<List<Prenda>> listarPrendas() {
+            return ResponseEntity.ok(service.listarCatalogo());
+        }
         @Operation( summary = "Crear una nueva prenda",
                     description = "Agrega una nueva prenda al catálogo"
     )
@@ -24,18 +36,7 @@ public class PrendaController {
         @ApiResponse(responseCode = "201", description = "Prenda creada exitosamente"),
         @ApiResponse(responseCode = "400", description = "Solicitud inválida"),
         @ApiResponse(responseCode = "500", description = "Error interno del servidor")
-    })
-        @GetMapping
-        public ResponseEntity<List<Prenda>> listarPrendas() {
-            return ResponseEntity.ok(service.listarCatalogo());
-        }
-        @Operation( summary = "Obtener prenda por ID",
-                    description = "Busca una prenda en el catálogo por su ID")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Prenda encontrada"),
-        @ApiResponse(responseCode = "404", description = "Prenda no encontrada"),
-        @ApiResponse(responseCode = "500", description = "Error interno del servidor")
-    })
+    })   
     @PostMapping("/agregar")
     public ResponseEntity<Prenda> crearPrenda(@Valid @RequestBody Prenda prenda) {
         return ResponseEntity.status(201).body(service.guardarPrenda(prenda));
