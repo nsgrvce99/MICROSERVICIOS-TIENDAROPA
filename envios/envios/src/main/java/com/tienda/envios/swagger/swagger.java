@@ -1,4 +1,5 @@
-package com.tienda.carrito.swagger;
+package com.tienda.envios.swagger;
+
 import org.springframework.context.annotation.Bean;// Clase principal de OpenAPI que representa la documentación completa de la API
 import org.springframework.context.annotation.Configuration;// Permite definir información de contacto (nombre, correo, sitio web, etc.)
 
@@ -7,17 +8,17 @@ import io.swagger.v3.oas.models.info.Contact;// Permite registrar métodos como 
 import io.swagger.v3.oas.models.info.Info;// Indica que esta clase contiene configuraciones de Spring
 
 @Configuration // Indica que esta clase contiene configuración de Spring
-public class Swagger {
+public class swagger{
     @Bean // Registra el objeto OpenAPI como un Bean de Spring
-    public OpenAPI CarritoOpenAPI() {
+    public OpenAPI enviosOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
                         
                         // Nombre de la API que aparecerá en Swagger
-                        .title("API de Carrito")
+                        .title("API de Envíos")
 
                         // Descripción general del proyecto
-                        .description("API REST para la gestión de Compras en carrito de compras")
+                        .description("API REST para la gestión de envíos")
 
                         // Versión de la API
                         .version("1.0")
