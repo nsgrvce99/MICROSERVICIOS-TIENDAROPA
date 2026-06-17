@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;// Permite registrar métodos
 import org.springframework.context.annotation.Configuration;// Indica que esta clase contiene configuraciones de Spring
 
 @Configuration // Indica que esta clase contiene configuración de Spring
-public class SwaggerConfig {
+public class Swagger {
     @Bean // Registra el objeto OpenAPI como un Bean de Spring
     public OpenAPI peliculasOpenAPI() {
         return new OpenAPI()

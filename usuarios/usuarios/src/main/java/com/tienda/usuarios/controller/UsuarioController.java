@@ -3,6 +3,10 @@ package com.tienda.usuarios.controller;
 import com.tienda.usuarios.dto.UsuarioSimpleDTO;
 import com.tienda.usuarios.model.Usuario;
 import com.tienda.usuarios.service.UsuarioService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 
 import java.util.HashMap;
@@ -21,12 +25,28 @@ public class UsuarioController {
     public UsuarioController(UsuarioService service) {
         this.service = service;
     }
-
+    @Operation(
+        summary = "Agregar nuevo usuario",
+        description = "Crea un nuevo usuario en la base de datos y devuelve el usuario creado."   
+    )
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "Usuario creado exitosamente"),
+        @ApiResponse(responseCode = "400", description = "Solicitud inválida, datos de usuario no válidos"),
+        @ApiResponse(responseCode = "500", description = "Error interno del servidor al crear el usuario")
+    })
     @PostMapping("/agregar")
     public ResponseEntity<Usuario> crearUsuario(@Valid @RequestBody Usuario usuario) {
         Usuario nuevo = service.guardarUsuario(usuario);
-        return ResponseEntity.status(201).body(nuevo); 
+        return ResponseEntity.status(201).body(nuevo);
     }
+    @Operation(
+        summary = "Buscar usuario por ID",
+        description = "Busca un usuario en la base de datos utilizando su ID y devuelve los detalles del usuario encontrado."
+    )
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Usuario encontrado exitosamente"),
+        @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
+    })
     @GetMapping("/{id}")
     public ResponseEntity<UsuarioSimpleDTO> buscarPorId(@PathVariable Integer id) {
         UsuarioSimpleDTO dto = service.buscarPorIdSimple(id);
@@ -35,7 +55,14 @@ public class UsuarioController {
         }
         return ResponseEntity.notFound().build();
     }
-
+    @Operation(
+        summary = "Eliminar usuario por ID",
+        description = "Elimina un usuario de la base de datos utilizando su ID y devuelve un mensaje indicando el resultado de la operación."
+    )
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Usuario eliminado exitosamente"),
+        @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
+    })
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<?> eliminar(@PathVariable Integer id){
         try {
@@ -50,6 +77,15 @@ public class UsuarioController {
             }
     }
 
+    @Operation(
+        summary = "Actualizar usuario",
+        description = "Actualiza los datos de un usuario existente en la base de datos y devuelve un mensaje indicando el resultado de la operación."
+    )
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Usuario actualizado exitosamente"),
+        @ApiResponse(responseCode = "404", description = "Usuario no encontrado"),
+        @ApiResponse(responseCode = "400", description = "Solicitud inválida, datos de usuario no válidos")
+    })
     @PutMapping("/actualizar")
     public ResponseEntity<?> actualizar(@Valid @RequestBody Usuario usuario, BindingResult result) {
         if (result.hasErrors()) {
