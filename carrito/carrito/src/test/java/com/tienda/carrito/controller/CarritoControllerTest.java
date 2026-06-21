@@ -14,6 +14,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -43,7 +45,7 @@ public class CarritoControllerTest {
     );
 
     //when(service.verCarrito()).thenReturn(carritos);
-    when(service.verCarrito(org.mockito.ArgumentMatchers.anyInt())).thenReturn(carritos);
+    when(service.verCarrito(anyInt())).thenReturn(carritos);
 
     mockMvc.perform(get("/carrito/usuario/10"))//mockMvc.perform(get("/carrito"))
             .andExpect(status().isOk());//verifica que el endpoint respondió:
@@ -58,7 +60,7 @@ public class CarritoControllerTest {
                 }
                 """;
     Carrito carritoCreado = new Carrito(1, 10, 30, 2000);
-    when(service.agregarItem(org.mockito.ArgumentMatchers.any(Carrito.class))).thenReturn(carritoCreado);
+    when(service.agregarItem(any(Carrito.class))).thenReturn(carritoCreado);
     mockMvc.perform(post("/carrito/agregar")
                     .contentType(APPLICATION_JSON)
                     .content(carritoJson)
@@ -68,7 +70,7 @@ public class CarritoControllerTest {
     @Test
     void vaciarCarrito() throws Exception {
     Carrito carritoCreado = new Carrito(1, 10, 30, 2000);
-    when(service.agregarItem(org.mockito.ArgumentMatchers.any(Carrito.class))).thenReturn(carritoCreado);
+    when(service.agregarItem(any(Carrito.class))).thenReturn(carritoCreado);
     mockMvc.perform(delete("/carrito/vaciar/10")
                     .contentType(APPLICATION_JSON)
     ).andExpect(status().isOk());
