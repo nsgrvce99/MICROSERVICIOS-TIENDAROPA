@@ -2,10 +2,14 @@ package com.tienda.carrito.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import jakarta.validation.constraints.NotBlank;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Carrito {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +22,7 @@ public class Carrito {
     @NotNull(message = "El ID de la prenda es obligatorio")
     private Integer prendaId;
 
-    @NotBlank(message = "La cantidad es obligatoria")
+    @NotNull(message = "La cantidad es obligatoria")
     @Min(value = 1, message = "Debe agregar al menos 1 prenda")
     private Integer cantidad;
 }

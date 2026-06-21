@@ -49,7 +49,7 @@ public class CarritoController {
                                         .map(this::convertir).collect(Collectors.toList());
         return ResponseEntity.ok(lista);
     }
-    @Operation(summary = "Ver el carrito de un usuario")
+    @Operation(summary = "Vaciar el carrito de un usuario")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Carrito vaciado correctamente"),
         @ApiResponse(responseCode = "404", description = "Carrito no vaciado"),
