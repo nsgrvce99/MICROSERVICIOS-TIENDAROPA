@@ -9,14 +9,16 @@ import lombok.Data;
 @Entity
 @Data
 public class Resena {
+    public Resena() {
+}
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank(message = "El ID de la prenda es obligatorio")
+    @NotNull(message = "El ID de la prenda es obligatorio")
     private Integer prendaId;
 
-    @NotBlank(message = "El ID del usuario es obligatorio")
+    @NotNull(message = "El ID del usuario es obligatorio")
     private Integer usuarioId;
 
     @NotNull(message = "Las estrellas son obligatorias")

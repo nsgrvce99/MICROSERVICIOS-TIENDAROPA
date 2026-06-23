@@ -10,6 +10,17 @@ import lombok.Data;
 @Table(name = "usuario")
 @Data
 public class Usuario {
+
+    public Usuario() {
+    }
+    public Usuario(Object object, Object object2, Object object3) {
+        //TODO Auto-generated constructor stub
+    }
+
+    public Usuario(Object object, Object object2, Object object3, Object object4) {
+        //TODO Auto-generated constructor stub
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
