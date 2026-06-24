@@ -9,21 +9,24 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+
 import org.springframework.http.MediaType;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tienda.inventario.dto.StockDTO;
 import com.tienda.inventario.model.Stock;
 import com.tienda.inventario.service.StockService;
 
+
+
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 @WebMvcTest(StockController.class)
-public class StockControllerTest {
+public class controllerInventario {
 
     @Autowired
     private MockMvc mockMvc;
-    @MockBean
+    @MockitoBean
     private StockService stockService;
     @Autowired
     private ObjectMapper objectMapper;
@@ -60,7 +63,7 @@ public class StockControllerTest {
     @Test
     public void testDescontarStock_Exitoso() throws Exception {
         int prendaId = 1;
-        int cantidad ADoscontar = 10;
+        int cantidadADoscontar = 10;
         
         Stock stockActualizado = new Stock();
         stockActualizado.setPrendaId(prendaId);

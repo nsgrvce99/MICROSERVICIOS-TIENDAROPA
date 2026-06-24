@@ -7,19 +7,23 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tienda.pedidos.dto.CheckoutRequestDTO;
 import com.tienda.pedidos.service.OrquestadorService;
 
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
+
+
+
+
 @WebMvcTest(CheckoutController.class)
-public class CheckoutControllerTest {
+public class controllerpedidos {
     @Autowired
     private MockMvc mockMvc;
-    @MockBean
+    @MockitoBean
     private OrquestadorService orquestadorService;
     @Autowired
     private ObjectMapper objectMapper;
@@ -44,7 +48,7 @@ public class CheckoutControllerTest {
         mockMvc.perform(post("/checkout/procesar")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(requestDTO)))
-                .andExpect(status().isOk()) 
+                .andExpect(status().isOk())
                 .andExpect(content().string(mensajeError));
     }
 }
