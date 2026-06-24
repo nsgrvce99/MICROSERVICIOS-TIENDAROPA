@@ -47,7 +47,7 @@ public class UsuarioControllerTest {
                 "password": "123456"
             }
             """;
-        Usuario UsuarioCreado = new Usuario("Juan", "Juanperez@gmail.com", "123456");
+        Usuario UsuarioCreado = new Usuario(1,"Juan","Juanperez@gmail.com","123456");
         when(service.guardarUsuario(any(Usuario.class))).thenReturn(UsuarioCreado);
         mockMvc.perform(post("/usuarios/agregar")
                 .contentType(APPLICATION_JSON)
@@ -92,6 +92,23 @@ public class UsuarioControllerTest {
                 .andExpect(status().isOk());
     }
     
+     @Test
+    void crearUsuarioFallido() throws Exception {
+        String usuarioJson = """
+            {
+                "nombre": "Juan",
+                "email":  "Juanperez@gmail.com",
+                "password": ""
+            }
+            """;
+        Usuario UsuarioCreado = new Usuario(1,"Juan","Juanperez@gmail.com","123456");
+        when(service.guardarUsuario(any(Usuario.class))).thenReturn(UsuarioCreado);
+        mockMvc.perform(post("/usuarios/agregar")
+                .contentType(APPLICATION_JSON)
+                .content(usuarioJson)
+                .with(csrf()))
+                .andExpect(status().isBadRequest());
+    }
 }
 
 

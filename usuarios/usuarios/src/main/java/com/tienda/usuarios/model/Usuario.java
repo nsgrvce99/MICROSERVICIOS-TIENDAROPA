@@ -4,22 +4,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "usuario")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Usuario {
-
-    public Usuario() {
-    }
-    public Usuario(Object object, Object object2, Object object3) {
-        //TODO Auto-generated constructor stub
-    }
-
-    public Usuario(Object object, Object object2, Object object3, Object object4) {
-        //TODO Auto-generated constructor stub
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.tienda.notificaciones.model.notificaciones;
 
 public interface NotificacionesRepository extends JpaRepository<notificaciones, Integer> {
-    Optional<notificaciones> findByPedidoId(Integer pedidoId);
+    Optional<notificaciones> findById(Integer Id);
 }

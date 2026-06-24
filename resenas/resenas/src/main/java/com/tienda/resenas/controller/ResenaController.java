@@ -41,7 +41,7 @@ public class ResenaController {
         @ApiResponse(responseCode = "200", description = "Reseñas obtenidas exitosamente"),
         @ApiResponse(responseCode = "404", description = "Prenda no encontrada")
     })
-    @GetMapping("/prenda/{prendaId}")
+    @GetMapping("/resena/{prendaId}")
     public ResponseEntity<List<ResenaDTO>> verResenas(@PathVariable Integer prendaId) {
         List<ResenaDTO> lista = service.verResenasPorPrenda(prendaId).stream()
         .map(this::convertir).collect(Collectors.toList());

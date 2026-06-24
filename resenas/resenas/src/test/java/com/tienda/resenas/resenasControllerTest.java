@@ -1,6 +1,7 @@
 package com.tienda.resenas;
 
 import com.tienda.resenas.controller.ResenaController;
+import com.tienda.resenas.dto.ResenaDTO;
 import com.tienda.resenas.model.Resena;
 import com.tienda.resenas.service.ResenaService;
 
@@ -41,7 +42,7 @@ public class resenasControllerTest {
                 }
                 """;
 
-        Resena resenaCreada = new Resena();
+        Resena resenaCreada = new Resena(1, 1, 1, 5, "Excelente");
         when(service.agregarResena(any(Resena.class))).thenReturn(resenaCreada);
 
         mockMvc.perform(post("/resenas/agregar")
@@ -54,13 +55,14 @@ public class resenasControllerTest {
     @Test
     void verResenas() throws Exception {
         List<Resena> lista = List.of(
-                new Resena()
+                new Resena(1, 1, 1, 5, "Excelente")
         );
 
         when(service.verResenasPorPrenda(any(Integer.class))).thenReturn(lista);
 
-        mockMvc.perform(get("/resenas/prenda/1"))
-                .andExpect(status().isOk());
+        mockMvc.perform(get("/resenas/resena/1")
+    )               .andExpect(status().isOk());
+
     }
 
 }

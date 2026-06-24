@@ -18,7 +18,7 @@ spring:
             - id: ruta-catalogo
               uri: lb://CATALOGO
               predicates:
-                - Path=/catalogo,/catalogo/**
+                - Path=/prendas,/prendas/**
             - id: ruta-envios
               uri: lb://ENVIOS
               predicates:
@@ -44,14 +44,18 @@ spring:
               uri: lb://PROMOCIONES
               predicates:
                 - Path=/promociones,/promociones/**
-            - id: ruta-reseñas
-              uri: lb://RESEÑAS
+            - id: ruta-resenas
+              uri: lb://RESENAS
               predicates:
-                - Path=/reseñas,/reseñas/**
+                - Path=/resenas,/resenas/**
             - id: ruta-usuarios
               uri: lb://USUARIOS
               predicates:
                 - Path=/usuarios,/usuarios/**
+            - id: ruta-checkout
+              uri: lb://CHECKOUT
+              predicates:
+                - Path=/checkout,/checkout/**
 
 eureka:
   client:

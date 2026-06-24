@@ -1,29 +1,29 @@
 package com.tienda.envios.swagger;
 
-import org.springframework.context.annotation.Bean;// Clase principal de OpenAPI que representa la documentación completa de la API
-import org.springframework.context.annotation.Configuration;// Permite definir información de contacto (nombre, correo, sitio web, etc.)
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-import io.swagger.v3.oas.models.OpenAPI;// Permite definir información general de la API (título, descripción, versión)
-import io.swagger.v3.oas.models.info.Contact;// Permite registrar métodos como Beans administrados por Spring
-import io.swagger.v3.oas.models.info.Info;// Indica que esta clase contiene configuraciones de Spring
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.Info;
 
-@Configuration // Indica que esta clase contiene configuración de Spring
+@Configuration
 public class swagger{
-    @Bean // Registra el objeto OpenAPI como un Bean de Spring
+    @Bean 
     public OpenAPI enviosOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
                         
-                        // Nombre de la API que aparecerá en Swagger
+
                         .title("API de Envíos")
 
-                        // Descripción general del proyecto
+                        
                         .description("API REST para la gestión de envíos")
 
-                        // Versión de la API
+
                         .version("1.0")
 
-                        // Información de contacto
+
                         .contact(new Contact()
                                 .name("Coreplay")
                                 .email("soporte@coreplay.com")

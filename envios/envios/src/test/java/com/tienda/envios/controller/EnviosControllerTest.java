@@ -58,7 +58,8 @@ class EnviosControllerTest {
         when(service.rastrear(pedidoId)).thenReturn(Optional.of(envioExistente));
 
         mockMvc.perform(get("/envios/rastreo/100")
-                        .contentType(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(envioExistente.toString())
         )
         .andExpect(status().isOk());
     }
@@ -66,10 +67,19 @@ class EnviosControllerTest {
     @Test
     void rastrearEnvioNotFound() throws Exception {
         Integer pedidoId = 200;
+        String envioJson = """
+                {   "id": 1,
+                    "pedidoId": 105,
+                    "direccion": "Las flores 742",
+                    "courier": "STARKEN",
+                    "estado": "PREPARANDO"
+                }
+                """;
         when(service.rastrear(pedidoId)).thenReturn(Optional.empty());
         
         mockMvc.perform(get("/envios/rastreo/200")
                         .contentType(MediaType.APPLICATION_JSON)
+                        .content(envioJson)
         )
         .andExpect(status().isNotFound());
     }
